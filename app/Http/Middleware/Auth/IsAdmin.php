@@ -15,7 +15,8 @@ class IsAdmin
      */
     public function handle($request, \Closure $next)
     {
-        if (Auth::check() || Auth::user()->is_admin) {
+        if (Auth::check() && Auth::user()->is_admin) {
+            info('User is admin', ['user_id' => Auth::id()]);
             return $next($request);
         }
 

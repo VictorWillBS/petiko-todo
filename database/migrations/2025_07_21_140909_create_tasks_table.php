@@ -14,8 +14,10 @@ return new class extends Migration
         Schema::create('tasks', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->string('description');
-            $table->string('status');
+            $table->string('description', 512);
+            $table->string('status')->nullable();
+            $table->foreignId('created_by')->constrained('users');
+            $table->timestamp('until_at');
             $table->timestamps();
             $table->softDeletes();
         });

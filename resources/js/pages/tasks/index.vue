@@ -1,0 +1,58 @@
+<script setup lang="ts">
+import AppCard from '@/components/AppCard.vue';
+import Button from '@/components/Buttons/Button.vue';
+import Paginator from '@/components/Paginator/Paginator.vue'
+import AppForm from '@/components/Tasks/AppForm.vue';
+import AppTask from '@/components/Tasks/AppTask.vue';
+import AppLayout from '@/layouts/AppLayout.vue';
+import { Task } from '@/types/Tasks/index';
+import { User } from '@/types/Users';
+import { computed, provide, ref } from 'vue';
+
+interface Props {
+    tasks?: object;
+    colaborators?: Task[];
+    wsId?: number;
+    auth: User;
+}
+
+const props = defineProps<Props>();
+
+const showAll = ref(true);
+const pendingTasks = computed(() => props.tasks.data?.filter((task: Task) => task.status === 'pending'));
+const taskFiltered = computed(() => (showAll.value ? props.tasks.data : pendingTasks.value));
+
+provide('colaborators', props.colaborators ?? []);
+provide('wsId', props.wsId ?? []);
+provide('auth', props.auth ?? {});
+</script>
+<template>
+    <AppLayout>
+        <AppCard :title="`Tasks (${tasks.total_pending} ${tasks.total_pending === 1 ? 'remaining' : 'remaings'})`">
+            <template #headerAdOnRight>
+                <div class="flex gap-2">
+                    <Button
+                        :variant="showAll ? 'success' : 'violet'"
+                        class="font-bold"
+                        @click="showAll = !showAll"
+                    >
+                        {{ showAll ? 'Hide' : 'Show' }} completed
+                    </Button>
+                    <AppForm type="create" />
+                </div>
+            </template>
+            <div class="max-h-[35rem] overflow-y-auto border-y border-gray-300">
+                <ul>
+                    <AppTask
+                        :task="task"
+                        v-for="task in taskFiltered"
+                        :key="task.id"
+                    />
+                </ul>
+            </div>
+            <template #footer>
+                <Paginator :links="tasks.links"/>
+            </template>
+        </AppCard>
+    </AppLayout>
+</template>

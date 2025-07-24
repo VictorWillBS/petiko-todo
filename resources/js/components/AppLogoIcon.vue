@@ -13,12 +13,154 @@ defineProps<Props>();
 </script>
 
 <template>
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 42" :class="className" v-bind="$attrs">
+    <svg
+        width="100"
+        height="100"
+        viewBox="0 0 100 100"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+    >
+        <!-- Fundo do ícone com cantos arredondados, estilo Apple -->
+        <rect
+            x="5"
+            y="5"
+            width="90"
+            height="90"
+            rx="20"
+            fill="#1A1A1A"
+        />
+        <!-- Cor de fundo mais escura para um toque tecnológico -->
+
+        <!-- Elemento principal: um checkmark para a lista de tarefas -->
         <path
-            fill="currentColor"
-            fill-rule="evenodd"
-            clip-rule="evenodd"
-            d="M17.2 5.633 8.6.855 0 5.633v26.51l16.2 9 16.2-9v-8.442l7.6-4.223V9.856l-8.6-4.777-8.6 4.777V18.3l-5.6 3.111V5.633ZM38 18.301l-5.6 3.11v-6.157l5.6-3.11V18.3Zm-1.06-7.856-5.54 3.078-5.54-3.079 5.54-3.078 5.54 3.079ZM24.8 18.3v-6.157l5.6 3.111v6.158L24.8 18.3Zm-1 1.732 5.54 3.078-13.14 7.302-5.54-3.078 13.14-7.3v-.002Zm-16.2 7.89 7.6 4.222V38.3L2 30.966V7.92l5.6 3.111v16.892ZM8.6 9.3 3.06 6.222 8.6 3.143l5.54 3.08L8.6 9.3Zm21.8 15.51-13.2 7.334V38.3l13.2-7.334v-6.156ZM9.6 11.034l5.6-3.11v14.6l-5.6 3.11v-14.6Z"
+            d="M30 50 L45 65 L70 40"
+            stroke="white"
+            stroke-width="7"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+        />
+
+        <!-- Elementos para multitarefas: checkmarks menores e sobrepostos ou linhas -->
+        <!-- Checkmark secundário, ligeiramente deslocado e mais claro -->
+        <path
+            d="M25 40 L40 55 L65 30"
+            stroke="#CCCCCC"
+            stroke-width="4"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            opacity="0.6"
+        />
+
+        <!-- Elementos de tecnologia: linhas abstratas ou grade sutil no fundo -->
+        <line
+            x1="15"
+            y1="25"
+            x2="85"
+            y2="25"
+            stroke="#444444"
+            stroke-width="1"
+            opacity="0.4"
+        />
+        <line
+            x1="15"
+            y1="35"
+            x2="85"
+            y2="35"
+            stroke="#444444"
+            stroke-width="1"
+            opacity="0.4"
+        />
+        <line
+            x1="15"
+            y1="45"
+            x2="85"
+            y2="45"
+            stroke="#444444"
+            stroke-width="1"
+            opacity="0.4"
+        />
+        <line
+            x1="15"
+            y1="55"
+            x2="85"
+            y2="55"
+            stroke="#444444"
+            stroke-width="1"
+            opacity="0.4"
+        />
+        <line
+            x1="15"
+            y1="65"
+            x2="85"
+            y2="65"
+            stroke="#444444"
+            stroke-width="1"
+            opacity="0.4"
+        />
+        <line
+            x1="15"
+            y1="75"
+            x2="85"
+            y2="75"
+            stroke="#444444"
+            stroke-width="1"
+            opacity="0.4"
+        />
+
+        <!-- Linhas verticais para criar uma grade mais sutil -->
+        <line
+            x1="25"
+            y1="15"
+            x2="25"
+            y2="85"
+            stroke="#444444"
+            stroke-width="1"
+            opacity="0.4"
+        />
+        <line
+            x1="35"
+            y1="15"
+            x2="35"
+            y2="85"
+            stroke="#444444"
+            stroke-width="1"
+            opacity="0.4"
+        />
+        <line
+            x1="45"
+            y1="15"
+            x2="45"
+            y2="85"
+            stroke="#444444"
+            stroke-width="1"
+            opacity="0.4"
+        />
+        <line
+            x1="55"
+            y1="15"
+            x2="55"
+            y2="85"
+            stroke="#444444"
+            stroke-width="1"
+            opacity="0.4"
+        />
+        <line
+            x1="65"
+            y1="15"
+            x2="65"
+            y2="85"
+            stroke="#444444"
+            stroke-width="1"
+            opacity="0.4"
+        />
+        <line
+            x1="75"
+            y1="15"
+            x2="75"
+            y2="85"
+            stroke="#444444"
+            stroke-width="1"
+            opacity="0.4"
         />
     </svg>
 </template>

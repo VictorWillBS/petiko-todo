@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import AppCard from '@/components/AppCard.vue';
 import Button from '@/components/Buttons/Button.vue';
+import Icon from '@/components/Icon.vue';
 import Paginator from '@/components/Paginator/Paginator.vue';
 import AppForm from '@/components/Tasks/AppForm.vue';
 import AppTask from '@/components/Tasks/AppTask.vue';
@@ -31,7 +32,7 @@ provide('auth', props.auth ?? {});
     <AppLayout head="Tasks">
         <AppCard :title="`Tasks (${tasks?.total_pending} ${tasks?.total_pending === 1 ? 'remaining' : 'remaings'})`">
             <template #headerAdOnRight>
-                <div class="flex gap-2 grow justify-center sm:grow-0 ">
+                <div class="flex grow justify-center gap-2 sm:grow-0">
                     <Button
                         :variant="showAll ? 'success' : 'violet'"
                         class="font-bold"
@@ -43,13 +44,26 @@ provide('auth', props.auth ?? {});
                 </div>
             </template>
             <div class="max-h-[35rem] overflow-y-auto border-y border-gray-300 pe-4">
-                <ul>
+                <ul v-if="taskFiltered?.length">
                     <AppTask
                         :task="task"
                         v-for="task in taskFiltered"
                         :key="task.id"
                     />
                 </ul>
+                <div
+                    class="flex grow flex-col items-center justify-center gap-2 py-20"
+                    v-else
+                >
+                    <div class="flex items-center gap-2 text-xl font-bold text-gray-500">
+                        <Icon
+                            name="heartCrack"
+                            class="size-5"
+                        />
+                        <h3 class="">Nothing here yet...</h3>
+                    </div>
+                    <h3 class="text-3xl font-bold text-gray-500">Try to create a new task!</h3>
+                </div>
             </div>
             <template #footer>
                 <Paginator :links="tasks?.links ?? []" />

@@ -4,12 +4,12 @@ import { useWorkspaceForm } from '@/composables/useWorkspaceForm';
 import { Task, TaskDraft } from '@/types/Tasks';
 import { Auth } from '@/types/Users';
 import { computed, inject, ref } from 'vue';
+import Button from '../Buttons/Button.vue';
 import ButtonIcon from '../Buttons/ButtonIcon.vue';
 import InputError from '../InputError.vue';
 import DialogDescription from '../ui/dialog/DialogDescription.vue';
 import Input from '../ui/input/Input.vue';
 import AppSignees from './AppSignees.vue';
-import Button from '../Buttons/Button.vue'
 
 interface Props {
     task?: Task | TaskDraft;
@@ -69,7 +69,9 @@ function closeModal() {
 }
 
 function updateFormByModalStateChanges(open: boolean) {
-    open ? makeDefaultForm() : form.reset();
+    if (open) return makeDefaultForm();
+
+    form.reset();
 }
 </script>
 

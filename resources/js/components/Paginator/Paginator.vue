@@ -15,7 +15,8 @@ defineProps<Props>();
             v-for="link in links"
             :key="link.url"
             @click="link.url && $inertia.visit(link.url)"
-            v-html="link.label"
-        />
+        >
+            <div v-html="link.label"></div>
+        </Button>
     </nav>
 </template>

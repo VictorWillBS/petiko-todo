@@ -16,12 +16,7 @@ This project offers a comprehensive solution for Task Manamgen.
 
 ## Initial Setup
 1. Start sail containers: `sudo ./vendor/bin/sail up -d`
-2. Access the mysql container: `sudo docker-compose exec mysql bash`
-3. Inside container add a mysql config running: `echo "sql_require_primary_key=0" >> /etc/my.cnf`
-4. Exit container: `exit`
-5. Stop sail containers: `sudo ./vendor/bin/sail stop`
-6. Restart sail containers: `sudo ./vendor/bin/sail up -d`
-7. Run the migrates: `sudo ./vendor/bin/sail artisan migrate`
+2. Run the migrates: `sudo ./vendor/bin/sail artisan migrate`
 
 ## Basic Usage
 1. Start sail containers: `sudo ./vendor/bin/sail up -d`

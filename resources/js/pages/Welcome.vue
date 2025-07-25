@@ -45,15 +45,15 @@ import { Head, Link } from '@inertiajs/vue3';
             class="flex w-full items-center justify-center opacity-100 transition-opacity duration-750 lg:grow starting:opacity-0"
         >
             <main
-                class="flex w-full max-w-[335px] flex-col-reverse overflow-hidden rounded-lg lg:max-w-4xl lg:flex-row"
+                class="font-bold flex w-full max-w-[335px] flex-col-reverse overflow-hidden rounded-lg lg:max-w-4xl lg:flex-row"
             >
                 <div
                     class="flex-1 flex flex-col justify-between rounded-br-lg rounded-bl-lg p-6 pb-12 text-[13px] leading-[20px] shadow-[inset_0px_0px_0px_1px_rgba(26,26,0,0.16)] lg:rounded-tl-lg lg:rounded-br-none lg:p-20 bg-neutral-900 text-white dark:shadow-[inset_0px_0px_0px_1px_#fffaed2d]"
                 >
                     <div>
-                        <h1 class="mb-1 font-medium">Welcome to To-Do</h1>
-                        <p class="mb-2  text-neutral-400">
-                            Welcome to To-Do, your personal task manager. Here you can create, manage, and track your
+                        <h1 class="mb-1 text-xl">Welcome to To-Do</h1>
+                        <p class="mb-2 font-normal">
+                            Your personal task manager. Here you can create, manage, and track your
                             tasks. Start by logging in or registering to get started.
                         </p>
                     </div>
@@ -62,7 +62,7 @@ import { Head, Link } from '@inertiajs/vue3';
                         <li>
                             <a
                                 :href="$page.props.auth.user ? route('tasks.index', 1) : route('login')"
-                                class="inline-block rounded-sm border border-black bg-neutral-400 px-5 py-1.5 text-sm leading-normal hover:border-black hover:bg-neutral-200 text-neutral-900 dark:hover:border-white dark:hover:bg-white"
+                                class="inline-block rounded-sm border border-black bg-white px-5 py-1.5 text-sm leading-normal hover:border-black hover:bg-neutral-200 text-neutral-900 dark:hover:border-white dark:hover:bg-white"
                             >
                                 Enjoy now
                             </a>

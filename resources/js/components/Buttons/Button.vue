@@ -6,11 +6,13 @@ interface Props {
     disabled?: boolean;
 }
 
-defineProps<Props>();
+withDefaults(defineProps<Props>(), {
+    variant: 'custom',
+});
 </script>
 <template>
     <button
-        class="h-fit rounded-xl px-4 py-2 cursor-pointer"
+        class="h-fit cursor-pointer rounded-xl px-4 py-2 transition"
         :class="{ 'cursor-not-allowed opacity-50': disabled, [variantClass[variant]]: variant }"
         :disabled="disabled"
     >

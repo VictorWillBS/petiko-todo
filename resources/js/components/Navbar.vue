@@ -10,23 +10,7 @@ defineProps<Props>();
 </script>
 <template>
     <div
-        class="
-            flex
-            h-24
-            items-center
-            justify-between
-            gap-4
-            border-0
-            border-b
-            border-white/20
-            bg-linear-30
-            from-blue-950
-            to-neutral-950
-            to-30%
-            px-4
-            sm:gap-16
-            sm:px-8
-        "
+        class="flex h-24 items-center justify-between gap-4 border-0 border-b border-white/20 bg-linear-30 from-blue-950 to-neutral-950 to-30% px-4 sm:gap-16 sm:px-8"
     >
         <ButtonIcon
             :name="sidebarOpen ? 'ChevronLeft' : 'menu'"

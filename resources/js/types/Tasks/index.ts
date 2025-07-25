@@ -1,4 +1,4 @@
-import { User } from "../Users";
+import { User } from '../Users';
 
 export interface Task {
     id: number;
@@ -8,7 +8,7 @@ export interface Task {
     due_date: string;
     created_at: string;
     updated_at: string;
-    signees?: User[]
+    signees?: User[];
 }
 
-export type TaskDraft = Omit<Task, 'id' | 'created_at' | 'updated_at'>
+export type TaskDraft = Omit<Task, 'id' | 'created_at' | 'updated_at'>;

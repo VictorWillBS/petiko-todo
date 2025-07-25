@@ -1,4 +1,3 @@
-
 export const variant = {
     success: 'bg-green-200 text-green-700 transition hover:bg-green-700 hover:text-green-200',
     danger: 'bg-red-200 text-red-700 transition hover:bg-red-700 hover:text-red-200',
@@ -8,7 +7,7 @@ export const variant = {
     light: 'bg-neutral-200 text-neutral-700 transition hover:bg-neutral-700 hover:text-neutral-200',
     ghost: 'border border-transparent hover:border-white',
     outlined: 'border border-white hover:bg-white/10',
-    custom:'',
-}
+    custom: '',
+};
 
 export type VariantType = keyof typeof variant;

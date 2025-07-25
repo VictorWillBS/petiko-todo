@@ -1,7 +1,6 @@
-import { describe, it, expect, vi, beforeEach } from 'vitest';
-import { mount, flushPromises } from '@vue/test-utils';
 import AppForm from '@/components/Tasks/AppForm.vue';
-import { nextTick } from 'process';
+import { mount } from '@vue/test-utils';
+import { beforeEach, describe, expect, it, vi } from 'vitest';
 
 const mockPost = vi.fn(() => Promise.resolve());
 const mockPatch = vi.fn(() => Promise.resolve());
@@ -70,5 +69,4 @@ describe('AppForm.vue', () => {
         expect(mockPatch).toHaveBeenCalled();
         expect(mockPost).not.toHaveBeenCalled();
     });
-
 });

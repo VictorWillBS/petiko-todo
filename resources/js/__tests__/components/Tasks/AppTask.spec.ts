@@ -1,7 +1,7 @@
-import { mount } from '@vue/test-utils'
-import { describe, it, expect, vi, beforeEach } from 'vitest'
+import { mount } from '@vue/test-utils';
+import { beforeEach, describe, expect, it, vi } from 'vitest';
 
-import AppTask from '@/components/Tasks/AppTask.vue'
+import AppTask from '@/components/Tasks/AppTask.vue';
 
 const mockDestroy = vi.fn();
 const mockPatch = vi.fn();
@@ -27,7 +27,7 @@ const taskPending = {
     created_at: '2025-01-01',
     updated_at: '2025-01-01',
     signees: [{ id: 1, name: 'User One' }],
-}
+};
 
 describe('AppTask.vue', () => {
     beforeEach(() => {
@@ -37,14 +37,14 @@ describe('AppTask.vue', () => {
 
     it('calls destroy on trash button click', async () => {
         const wrapper = mount(AppTask, {
-            props: { task: taskPending }
-        })
+            props: { task: taskPending },
+        });
 
-        const trashBtn = wrapper.find('[data-test-id="delete-btn"]')
-        expect(trashBtn.exists()).toBe(true)
+        const trashBtn = wrapper.find('[data-test-id="delete-btn"]');
+        expect(trashBtn.exists()).toBe(true);
 
-        await trashBtn.trigger('click')
+        await trashBtn.trigger('click');
 
         expect(mockDestroy).toHaveBeenCalledWith('tasks.destroy', [taskPending.id], { preserveScroll: true });
-    })
-})
+    });
+});

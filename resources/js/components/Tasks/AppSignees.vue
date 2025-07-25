@@ -1,12 +1,11 @@
 <script setup lang="ts">
-import { User } from '@/types/Users'
+import { User } from '@/types/Users';
 import UserShort from '../User/UserShort.vue';
 
 interface Props {
     modelValue?: number;
     signees: User[];
 }
-
 
 withDefaults(defineProps<Props>(), {
     signees: () => [],

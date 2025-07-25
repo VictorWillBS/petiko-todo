@@ -1,4 +1,4 @@
-import { router, useForm, usePage } from "@inertiajs/vue3";
+import { router, useForm, usePage } from '@inertiajs/vue3';
 
 type RouteParams = string | number;
 type FormOptions = Record<string, any>;

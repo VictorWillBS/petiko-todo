@@ -3,9 +3,9 @@ import { useWorkspaceForm } from '@/composables/useWorkspaceForm';
 import { formatDate } from '@/helpers/formater';
 import { Task } from '@/types/Tasks/index';
 
+import { User } from '@/types/Users';
 import ButtonIcon from '../Buttons/ButtonIcon.vue';
 import AppForm from './AppForm.vue';
-import { User } from '@/types/Users'
 
 interface Props {
     task: Task;

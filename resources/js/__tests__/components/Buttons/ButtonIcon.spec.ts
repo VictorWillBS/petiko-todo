@@ -1,23 +1,23 @@
-import ButtonIcon from "@/components/Buttons/ButtonIcon.vue";
-import Icon from "@/components/Icon.vue";
-import { mount } from "@vue/test-utils";
-import { describe, it, expect, vi } from "vitest";
+import ButtonIcon from '@/components/Buttons/ButtonIcon.vue';
+import Icon from '@/components/Icon.vue';
+import { mount } from '@vue/test-utils';
+import { describe, expect, it, vi } from 'vitest';
 
 describe('Button.vue', () => {
     vi.mock('@/components/Buttons/index.ts', () => ({
         variant: {
             success: 'bg-blue-500 text-white',
-            secondary: 'bg-gray-200 text-black'
-        }
+            secondary: 'bg-gray-200 text-black',
+        },
     }));
 
     it('Button basic render successfuly', () => {
         const wrapper = mount(ButtonIcon, {
-            props: { variant: 'success', name: 'check' }
-        })
+            props: { variant: 'success', name: 'check' },
+        });
 
         expect(wrapper.findComponent(Icon).exists()).toBe(true);
-    })
+    });
 
     it('Disable button successfuly', () => {
         const wrapper = mount(ButtonIcon, {
@@ -37,5 +37,5 @@ describe('Button.vue', () => {
 
         expect(wrapper.classes()).toContain('bg-blue-500');
         expect(wrapper.classes()).toContain('text-white');
-    })
-})
+    });
+});

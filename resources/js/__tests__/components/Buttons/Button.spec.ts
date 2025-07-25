@@ -1,13 +1,12 @@
-import { describe, it, expect, vi } from 'vitest';
-import { mount } from '@vue/test-utils';
 import Button from '@/components/Buttons/Button.vue';
-
+import { mount } from '@vue/test-utils';
+import { describe, expect, it, vi } from 'vitest';
 
 vi.mock('@/components/Buttons/index.ts', () => ({
     variant: {
         success: 'bg-blue-500 text-white',
-        secondary: 'bg-gray-200 text-black'
-    }
+        secondary: 'bg-gray-200 text-black',
+    },
 }));
 
 describe('Button.vue', () => {
@@ -46,5 +45,5 @@ describe('Button.vue', () => {
 
         expect(wrapper.classes()).toContain('bg-blue-500');
         expect(wrapper.classes()).toContain('text-white');
-    })
+    });
 });

@@ -1,18 +1,26 @@
 <script setup lang="ts">
-import AppLayout from '@/layouts/app/AppSidebarLayout.vue';
-import type { BreadcrumbItemType } from '@/types';
+import Navbar from '@/components/Navbar.vue';
+import Sidebar from '@/components/Sidebar.vue';
+import { Head } from '@inertiajs/vue3';
 
 interface Props {
-    breadcrumbs?: BreadcrumbItemType[];
+    head?: string;
 }
 
-withDefaults(defineProps<Props>(), {
-    breadcrumbs: () => [],
-});
+defineProps<Props>();
 </script>
 
 <template>
-    <AppLayout :breadcrumbs="breadcrumbs">
-        <slot />
-    </AppLayout>
+    <div class="flex min-h-screen flex-col bg-neutral-900">
+        <Head :title="head" />
+        <Navbar />
+        <div class="relative flex flex-1 flex-col overflow-auto">
+            <Sidebar />
+            <div
+                class="flex max-h-[calc(100vh-6rem)] flex-1 flex-col overflow-y-auto lg:ms-80"
+            >
+                <slot />
+            </div>
+        </div>
+    </div>
 </template>

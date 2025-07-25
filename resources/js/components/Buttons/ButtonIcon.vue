@@ -12,7 +12,7 @@ defineProps<Props>();
 </script>
 <template>
     <button
-        class="h-fit rounded-xl p-2"
+        class="h-fit rounded-xl p-2 flex items-center gap-2 cursor-pointer"
         :class="[variantClass[variant], { 'cursor-not-allowed opacity-50': disabled }]"
         :disabled="disabled"
     >
@@ -20,5 +20,6 @@ defineProps<Props>();
             :name="name"
             class="h-5 w-5"
         ></Icon>
+        <slot/>
     </button>
 </template>

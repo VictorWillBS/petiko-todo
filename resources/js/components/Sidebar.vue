@@ -17,7 +17,7 @@ const page = usePage();
             <div class="flex flex-col gap-4">
                 <UserShort
                     v-bind="colaborator"
-                    v-for="(colaborator, index) in page.props.colaborators as User[]"
+                    v-for="(colaborator, index) in page.props.collaborators as User[]"
                     :key="index"
                 />
             </div>

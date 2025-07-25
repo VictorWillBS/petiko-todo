@@ -4,12 +4,14 @@ namespace App\Providers;
 
 use App\Models\User;
 use App\Models\Workspace;
+use App\Modules\Users\Repositories\Users;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\ServiceProvider;
 use Inertia\Inertia;
 
 class AppServiceProvider extends ServiceProvider
 {
+
     /**
      * Register any application services.
      */
@@ -31,8 +33,8 @@ class AppServiceProvider extends ServiceProvider
                 'success' => fn() => session('success'),
                 'error' => fn() => session('error'),
             ],
-            'colaborators' => fn() => User::all(),
             'wsId' => session('wsId'),
+            'collaborators' => fn () => User::inWorkspace(session('wsId', 10))->get(),
         ]);
     }
 }

@@ -35,6 +35,15 @@ class User extends Authenticatable
 
     public function tasks(): BelongsToMany
     {
-        return $this->belongsToMany(Task::class);
+        return $this->belongsToMany(Task::class, 'tasks_users');
+    }
+
+    public function scopeInWorkspace($query, int $workspaceId)
+    {
+        return $query->whereHas(
+            'tasks',
+            fn($q) =>
+            $q->where('workspace_id', $workspaceId)
+        );
     }
 }

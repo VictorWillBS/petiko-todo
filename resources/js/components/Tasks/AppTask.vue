@@ -45,22 +45,26 @@ defineExpose({ destroy });
             class="flex items-center justify-between"
             :class="{ 'opacity-50': task.status === 'completed' }"
         >
-            <span class="text-lg capitalize">{{ task.title }}</span>
+            <span class="text-lg font-bold capitalize">{{ task.title }}</span>
             <span class="text-sm text-gray-500">{{ formatDate(task.created_at) }}</span>
         </div>
         <div class="flex grow flex-wrap gap-8">
             <div
-                class="flex-1 min-w-xs"
+                class="min-w-xs flex-1"
                 :class="{ 'opacity-50': task.status === 'completed' }"
             >
-                <p class="mt-1 text-gray-600 line-clamp-3">{{ task.description }}</p>
-                <div class="mt-2 flex items-center gap-2">
-                    <span class="text-sm text-gray-500">Due: {{ formatDate(task.due_date) }}</span>
-                    <span class="text-sm text-gray-500">Status: {{ task.status }}</span>
+                <p class="mt-1 line-clamp-3 font-bold text-gray-600">{{ task.description }}</p>
+                <div class="mt-2 items-center gap-2">
+                    <div class="text-sm text-gray-500">
+                        Due: <b>{{ formatDate(task.due_date) }}</b>
+                    </div>
+                    <div class="text-sm text-gray-500 capitalize">
+                        Status: <b>{{ task.status }} </b>
+                    </div>
                 </div>
                 <div class="mt-2 flex items-center gap-2">
                     <span class="text-sm text-gray-500 capitalize">
-                        Signees: {{ task.signees?.map((signee: User) => signee.name).join(', ') }}
+                        Signees: <b>{{ task.signees?.map((signee: User) => signee.name).join(', ') }}</b>
                     </span>
                 </div>
             </div>

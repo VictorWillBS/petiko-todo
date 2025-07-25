@@ -8,14 +8,18 @@ import { useToast } from 'vue-toastification';
 interface Props {
     head?: string;
 }
+interface Flash {
+    success?: string;
+    error?: string;
+}
 
 defineProps<Props>();
 const toast = useToast();
 const page = usePage();
 
 watch(
-    () => page.props.flash,
-    (flash) => {
+    () => page.props.flash as Flash,
+    (flash: Flash) => {
         if (flash.success) toast.success(flash.success);
         if (flash.error) toast.error(flash.error);
     },

@@ -31,7 +31,7 @@ provide('auth', props.auth ?? {});
     <AppLayout head="Tasks">
         <AppCard :title="`Tasks (${tasks?.total_pending} ${tasks?.total_pending === 1 ? 'remaining' : 'remaings'})`">
             <template #headerAdOnRight>
-                <div class="flex gap-2">
+                <div class="flex gap-2 grow justify-center sm:grow-0 ">
                     <Button
                         :variant="showAll ? 'success' : 'violet'"
                         class="font-bold"
@@ -42,7 +42,7 @@ provide('auth', props.auth ?? {});
                     <AppForm type="create" />
                 </div>
             </template>
-            <div class="max-h-[35rem] overflow-y-auto border-y border-gray-300">
+            <div class="max-h-[35rem] overflow-y-auto border-y border-gray-300 pe-4">
                 <ul>
                     <AppTask
                         :task="task"

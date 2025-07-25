@@ -2,13 +2,14 @@
 import { Dialog, DialogContent, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import { useWorkspaceForm } from '@/composables/useWorkspaceForm';
 import { Task, TaskDraft } from '@/types/Tasks';
+import { Auth } from '@/types/Users';
 import { computed, inject, ref } from 'vue';
 import ButtonIcon from '../Buttons/ButtonIcon.vue';
 import InputError from '../InputError.vue';
 import DialogDescription from '../ui/dialog/DialogDescription.vue';
 import Input from '../ui/input/Input.vue';
 import AppSignees from './AppSignees.vue';
-import { Auth } from '@/types/Users'
+import Button from '../Buttons/Button.vue'
 
 interface Props {
     task?: Task | TaskDraft;
@@ -31,34 +32,25 @@ const isOpen = ref(false);
 
 const { form, post, patch } = useWorkspaceForm<Task | Partial<Task>>(props.task);
 
-const due_date = computed({
-    get: () => form.due_date?.replaceAll('/', '-'),
-    set: (val: string) => {
-        form.due_date = val;
-    },
+const due_date = computed<string>({
+    get: () => form.due_date?.replaceAll('/', '-') ?? '',
+    set: (val) => (form.due_date = val),
 });
 
 function trySave() {
     const options = {
-        onSuccess: () => {
-            closeModal();
-        },
-        onError: (errors: any) => {
+        onSuccess: closeModal,
+        onError: (errors: Record<string, string>) => {
             form.clearErrors();
             form.setError(errors);
         },
     };
 
-    if (form.id) {
-        return update(options);
-    }
-
-    return create(options);
+    return form.id ? update(options) : create(options);
 }
 
 function makeDefaultForm() {
     if (form.signees?.length || !auth.user) return;
-
     form.signees = [auth.user];
 }
 
@@ -68,7 +60,6 @@ function create(options: object) {
 
 function update(options: object) {
     if (!form.id) return;
-
     return patch('tasks.update', [form.id], options);
 }
 
@@ -78,12 +69,7 @@ function closeModal() {
 }
 
 function updateFormByModalStateChanges(open: boolean) {
-    if (open) {
-        makeDefaultForm();
-        return;
-    }
-
-    form.reset();
+    open ? makeDefaultForm() : form.reset();
 }
 </script>
 
@@ -93,12 +79,13 @@ function updateFormByModalStateChanges(open: boolean) {
         @update:open="updateFormByModalStateChanges"
     >
         <DialogTrigger as-child>
-            <button
-                class="rounded-lg bg-blue-500 px-4 py-2 font-bold text-white"
+            <Button
+                data-test-id="trigger-button"
+                class="rounded-lg bg-blue-500 px-4 py-2 font-bold text-white hover:brightness-125"
                 v-if="type === 'create'"
             >
                 New Task
-            </button>
+            </Button>
             <ButtonIcon
                 variant="info"
                 name="squarePen"

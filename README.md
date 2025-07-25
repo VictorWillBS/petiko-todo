@@ -11,8 +11,9 @@ This project offers a comprehensive solution for Task Manamgen.
 1. Clone the repository: `git clone https://github.com/VictorWillBS/petiko-todo.git`
 2. Navigate to the project directory: `cd petiko-todo`
 3. Install the dependencies: `composer install`
-4. Copy the configuration file: `cp .env.example .env`
-5. Configure the `.env` file with your database and other necessary settings.
+4. Install the dependencies: `npm install`
+5. Copy the configuration file: `cp .env.example .env`
+6. Configure the `.env` file with your database and other necessary settings.
 
 ## Initial Setup
 1. Start sail containers: `sudo ./vendor/bin/sail up -d`

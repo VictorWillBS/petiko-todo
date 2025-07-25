@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { inject } from 'vue';
 import UserShort from '../User/UserShort.vue';
 import { User } from '@/types'
 

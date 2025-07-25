@@ -1,16 +1,17 @@
 <script setup lang="ts">
 import { Dialog, DialogContent, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import { useWorkspaceForm } from '@/composables/useWorkspaceForm';
-import { Task } from '@/types/Tasks';
+import { Task, TaskDraft } from '@/types/Tasks';
 import { computed, inject, ref } from 'vue';
 import ButtonIcon from '../Buttons/ButtonIcon.vue';
 import InputError from '../InputError.vue';
 import DialogDescription from '../ui/dialog/DialogDescription.vue';
 import Input from '../ui/input/Input.vue';
 import AppSignees from './AppSignees.vue';
+import { Auth } from '@/types/Users'
 
 interface Props {
-    task?: Task;
+    task?: Task | TaskDraft;
     type: 'create' | 'edit';
 }
 
@@ -24,11 +25,11 @@ const props = withDefaults(defineProps<Props>(), {
     }),
 });
 
-const auth = inject('auth');
+const auth: Auth = inject('auth')!;
 
 const isOpen = ref(false);
 
-const { form, post, patch } = useWorkspaceForm<Task>(props.task);
+const { form, post, patch } = useWorkspaceForm<Task | Partial<Task>>(props.task);
 
 const due_date = computed({
     get: () => form.due_date?.replaceAll('/', '-'),
@@ -42,10 +43,9 @@ function trySave() {
         onSuccess: () => {
             closeModal();
         },
-        onError: (errors) => {
+        onError: (errors: any) => {
             form.clearErrors();
             form.setError(errors);
-            console.error('Error saving task:', errors);
         },
     };
 
@@ -57,7 +57,7 @@ function trySave() {
 }
 
 function makeDefaultForm() {
-    if (form.signees.length) return;
+    if (form.signees?.length || !auth.user) return;
 
     form.signees = [auth.user];
 }
@@ -67,6 +67,8 @@ function create(options: object) {
 }
 
 function update(options: object) {
+    if (!form.id) return;
+
     return patch('tasks.update', [form.id], options);
 }
 
@@ -107,7 +109,7 @@ function updateFormByModalStateChanges(open: boolean) {
         <DialogContent>
             <DialogHeader>
                 <DialogTitle>
-                    <h5 class="capitalize">{{ type }} Task {{ task.id && `#${task.id}` }}</h5>
+                    <h5 class="capitalize">{{ type }} Task {{ 'id' in task ? `#${task.id}` : '' }}</h5>
                 </DialogTitle>
             </DialogHeader>
 

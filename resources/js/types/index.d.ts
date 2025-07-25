@@ -36,3 +36,23 @@ export interface User {
 }
 
 export type BreadcrumbItemType = BreadcrumbItem;
+
+export interface PaginationMeta {
+    total: number;
+    per_page: number;
+    current_page: number;
+    total_pending: number;
+    last_page: number;
+    first_page_url: string;
+    last_page_url: string;
+    next_page_url: string | null;
+    prev_page_url: string | null;
+    path: string;
+    from: number;
+    to: number;
+    links: [];
+}
+
+export interface PaginatedResponse<T> extends PaginationMeta {
+    data: T[];
+}

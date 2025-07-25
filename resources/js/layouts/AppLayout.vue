@@ -16,9 +16,7 @@ defineProps<Props>();
         <Navbar />
         <div class="relative flex flex-1 flex-col overflow-auto">
             <Sidebar />
-            <div
-                class="flex max-h-[calc(100vh-6rem)] flex-1 flex-col overflow-y-auto lg:ms-80"
-            >
+            <div class="flex max-h-[calc(100vh-6rem)] flex-1 flex-col overflow-y-auto lg:ms-80">
                 <slot />
             </div>
         </div>

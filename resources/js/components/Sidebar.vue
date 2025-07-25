@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { Link, usePage } from '@inertiajs/vue3';
 import UserShort from './User/UserShort.vue';
+import { User } from '@/types/Users'
 
 const page = usePage();
 </script>
@@ -16,12 +17,11 @@ const page = usePage();
             <div class="flex flex-col gap-4">
                 <UserShort
                     v-bind="colaborator"
-                    v-for="(colaborator, index) in page.props.colaborators"
+                    v-for="(colaborator, index) in page.props.colaborators as User[]"
                     :key="index"
                 />
             </div>
             <Link class="block w-full" method="post" :href="route('logout')" as="button">
-            <LogOut class="mr-2 h-4 w-4" />
             Log out
         </Link>
         </div>

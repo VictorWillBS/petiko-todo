@@ -1,13 +1,26 @@
 <script setup lang="ts">
 import Navbar from '@/components/Navbar.vue';
 import Sidebar from '@/components/Sidebar.vue';
-import { Head } from '@inertiajs/vue3';
+import { Head, usePage } from '@inertiajs/vue3';
+import { watch } from 'vue';
+import { useToast } from 'vue-toastification';
 
 interface Props {
     head?: string;
 }
 
 defineProps<Props>();
+const toast = useToast();
+const page = usePage();
+
+watch(
+    () => page.props.flash,
+    (flash) => {
+        if (flash.success) toast.success(flash.success);
+        if (flash.error) toast.error(flash.error);
+    },
+    { deep: true, immediate: true },
+);
 </script>
 
 <template>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Models\Workspace;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -45,7 +46,15 @@ class RegisteredUserController extends Controller
         event(new Registered($user));
 
         Auth::login($user);
+        Workspace::create([
+            'name' => $user->name . "'s Workspace",
+            'owner_id' => $user->id,
+            'slug' => str($user->name)->slug(),
+        ]);
 
-        return to_route('dashboard');
+        session(['wsId' => Workspace::where('owner_id', $user->id)->first()->id]);
+
+        return to_route('tasks.index', ['wsId' => session('wsId')])
+            ->with('success', 'Account created successfully.');
     }
 }

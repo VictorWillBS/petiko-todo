@@ -17,7 +17,7 @@ defineProps<Props>();
             />
         </div>
         <div class="line-clamp-2 truncate">
-            <span class="font-bold break-all capitalize">{{ name }}</span>
+            <span class="font-bold break-all capitalize">{{ name.split(' ').slice(0, 2).join(' ') }}</span>
             <span class="over"> -{{ email }} </span>
         </div>
     </div>

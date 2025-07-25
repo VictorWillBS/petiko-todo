@@ -1,7 +1,8 @@
 <script setup lang="ts">
-import type { User } from '@/types/Users';
+import { User } from '@/types/Users';
 import { Link, useForm, usePage } from '@inertiajs/vue3';
 import { computed } from 'vue';
+
 import ButtonIcon from './Buttons/ButtonIcon.vue';
 import Icon from './Icon.vue';
 import UserShort from './User/UserShort.vue';
@@ -20,7 +21,9 @@ function changeRole() {
 </script>
 
 <template>
-    <div class="gradient absolute top-0 left-0 flex h-full w-xs flex-col gap-8 divide-y rounded-br-4xl py-8 text-white shadow-lg">
+    <div
+        class="gradient absolute top-0 left-0 flex h-full w-xs flex-col gap-8 divide-y rounded-br-4xl py-8 text-white shadow-lg"
+    >
         <div class="px-4 pb-4">
             <div></div>
             <div class="flex items-center gap-2">
@@ -61,10 +64,8 @@ function changeRole() {
                 </div>
             </div>
         </div>
-
         <div class="flex grow flex-col gap-6 pb-4">
             <h6 class="px-4 font-bold">Colaborators</h6>
-
             <div class="flex flex-col gap-4">
                 <UserShort
                     v-for="(colaborator, index) in collaborators"

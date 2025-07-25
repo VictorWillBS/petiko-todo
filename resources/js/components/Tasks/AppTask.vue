@@ -1,10 +1,11 @@
 <script setup lang="ts">
 import { useWorkspaceForm } from '@/composables/useWorkspaceForm';
 import { formatDate } from '@/helpers/formater';
-import { User } from '@/types';
 import { Task } from '@/types/Tasks/index';
+
 import ButtonIcon from '../Buttons/ButtonIcon.vue';
 import AppForm from './AppForm.vue';
+import { User } from '@/types/Users'
 
 interface Props {
     task: Task;

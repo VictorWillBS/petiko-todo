@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import type { Component } from 'vue';
 import { variant as variantClass, VariantType } from '.';
+
 import Icon from '../Icon.vue';
 
 interface Props {

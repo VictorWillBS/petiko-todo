@@ -1,6 +1,6 @@
 <script setup lang="ts">
+import { User } from '@/types/Users'
 import UserShort from '../User/UserShort.vue';
-import { User } from '@/types'
 
 interface Props {
     modelValue?: number;

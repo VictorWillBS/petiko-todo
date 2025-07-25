@@ -24,10 +24,9 @@ class StoreTasksRequest extends FormRequest
     {
         return [
             'title' => 'required|string|max:255',
-            'description' => 'nullable|string',
-            'until_at' => 'required|date_format:Y-m-d H:i:s',
-            'created_by' => 'required|exists:users,id',
-            'signee_id' => 'required|exists:users,id',
+            'description' => 'nullable|string|max:512',
+            'due_date' => 'required|date_format:Y-m-d|after:yesterday',
+            'signees' => 'required|array',
         ];
     }
 }

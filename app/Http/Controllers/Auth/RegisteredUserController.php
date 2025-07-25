@@ -46,13 +46,13 @@ class RegisteredUserController extends Controller
         event(new Registered($user));
 
         Auth::login($user);
-        Workspace::create([
+        $workspace = Workspace::create([
             'name' => $user->name . "'s Workspace",
             'owner_id' => $user->id,
             'slug' => str($user->name)->slug(),
         ]);
 
-        session(['wsId' => Workspace::where('owner_id', $user->id)->first()->id]);
+        session(['wsId' => $workspace->id]);
 
         return to_route('tasks.index', ['wsId' => session('wsId')])
             ->with('success', 'Account created successfully.');

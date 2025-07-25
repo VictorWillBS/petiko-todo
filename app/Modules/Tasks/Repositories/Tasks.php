@@ -57,7 +57,7 @@ class Tasks
 
     public function allBySigneeId(int $signeeId): LengthAwarePaginator
     {
-        $completed = TaskStatus::COMPLETED; // ajuste se for enum/string
+        $completed = TaskStatus::COMPLETED;
 
         return $this->task->newQuery()
             ->fromWorkspace($this->workspace->id)

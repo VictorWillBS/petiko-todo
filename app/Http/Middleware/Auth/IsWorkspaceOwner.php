@@ -4,22 +4,24 @@ declare(strict_types=1);
 
 namespace App\Http\Middleware\Auth;
 
+use App\Models\Workspace;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class IsAdmin
+class IsWorkspaceOwner
 {
     /**
      * Handle an incoming request.
      *
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
-    public function handle($request, \Closure $next)
+    public function handle(Request $request, \Closure $next)
     {
-        if (Auth::check() && Auth::user()->is_admin) {
+        if (Workspace::find($request->route('wsId'))->owner_id === Auth::id()) {
 
             return $next($request);
         }
 
-        return to_route('tasks.index', (['wsId' => session('wsId')]))->with('error', 'You do not have admin access.');
+        return to_route('home')->with('error', 'You do not have workspace access.');
     }
 }

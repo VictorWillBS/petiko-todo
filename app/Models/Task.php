@@ -51,6 +51,7 @@ class Task extends Model
     {
         $idList = array_column($data, 'id');
         $emailList = array_column($data, 'email');
+
         $users = User::whereIn('id', $idList)->orWhereIn('email', $emailList)->get();
         $this->signees()->sync($users);
 

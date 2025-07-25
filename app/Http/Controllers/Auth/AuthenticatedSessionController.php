@@ -36,7 +36,6 @@ class AuthenticatedSessionController extends Controller
 
         session(['wsId' => Workspace::where('owner_id', Auth::id())->first()->id]);
 
-
         return redirect()->intended(
             route('tasks.index', ['wsId' => session('wsId'), 'absolute' => false])
         );

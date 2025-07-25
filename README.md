@@ -55,13 +55,7 @@ If you got a `EACCES: permission denied` error, you must change the project fold
 
 ### Front-end
 - **Running All Tests**
-    - Run the command: `sudo ./vendor/bin/sail npm run test:run`.
-
-- **Running Test in Real time**
-    - Run the command: `sudo ./vendor/bin/sail npm run test:watch`.
-
-- **Running Test With Coverage Results**
-    - Run the command: `sudo ./vendor/bin/sail npm run test:coverage`.
+    - Run the command: `sudo ./vendor/bin/sail npm run test`.
 
 ## Warnings
 

@@ -20,9 +20,7 @@ function changeRole() {
 </script>
 
 <template>
-    <div
-        class="gradient absolute top-0 left-0 hidden h-full w-xs flex-col gap-8 divide-y rounded-br-4xl py-8 text-white lg:flex"
-    >
+    <div class="gradient absolute top-0 left-0 flex h-full w-xs flex-col gap-8 divide-y rounded-br-4xl py-8 text-white shadow-lg">
         <div class="px-4 pb-4">
             <div></div>
             <div class="flex items-center gap-2">

@@ -2,7 +2,8 @@
 import Navbar from '@/components/Navbar.vue';
 import Sidebar from '@/components/Sidebar.vue';
 import { Head, usePage } from '@inertiajs/vue3';
-import { watch } from 'vue';
+import { ref, watch } from 'vue';
+
 import { useToast } from 'vue-toastification';
 
 interface Props {
@@ -16,6 +17,7 @@ interface Flash {
 defineProps<Props>();
 const toast = useToast();
 const page = usePage();
+const sidebarOpen = ref(page.props.sidebarOpen);
 
 watch(
     () => page.props.flash as Flash,
@@ -30,10 +32,16 @@ watch(
 <template>
     <div class="flex min-h-screen flex-col bg-neutral-900">
         <Head :title="head" />
-        <Navbar />
+        <Navbar
+            :sidebarOpen="sidebarOpen"
+            @update:sidebarOpen="sidebarOpen = $event"
+        />
         <div class="relative flex flex-1 flex-col overflow-auto">
-            <Sidebar />
-            <div class="flex max-h-[calc(100vh-6rem)] flex-1 flex-col overflow-y-auto lg:ms-80">
+            <Sidebar v-if="sidebarOpen" />
+            <div
+                class="flex max-h-[calc(100vh-6rem)] flex-1 flex-col overflow-y-auto"
+                :class="{ 'lg:ms-80': sidebarOpen }"
+            >
                 <slot />
             </div>
         </div>

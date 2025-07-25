@@ -50,7 +50,7 @@ defineExpose({ destroy });
         </div>
         <div class="flex grow flex-wrap gap-8">
             <div
-                class="min-w-xs flex-1"
+                class="flex-1"
                 :class="{ 'opacity-50': task.status === 'completed' }"
             >
                 <p class="mt-1 line-clamp-3 font-bold text-gray-600">{{ task.description }}</p>

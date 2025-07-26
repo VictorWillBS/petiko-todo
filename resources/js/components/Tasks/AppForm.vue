@@ -132,7 +132,7 @@ function updateFormByModalStateChanges(open: boolean) {
                         id="description"
                         v-model="form.description"
                         rows="3"
-                        class="mt-1 block w-full rounded-md border-gray-300 px-2 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                        class="mt-1 block w-full rounded-md border-gray-300 px-4 py-2 shadow-sm focus:border-blue-500 focus:ring-blue-500"
                     ></textarea>
                     <InputError :message="form.errors.description" />
                 </div>
